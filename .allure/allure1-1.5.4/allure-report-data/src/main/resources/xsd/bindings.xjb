@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               schemaLocation="report-data.xsd"
+               jaxb:version="2.1">
+
+    <jaxb:bindings node="//xsd:complexType[@name='allure-test-case-info']">
+        <jaxb:class ref="ru.yandex.qatools.allure.data.AllureTestCaseInfo"/>
+    </jaxb:bindings>
+
+    <jaxb:bindings node="//xsd:complexType[@name='statistic']">
+        <jaxb:class ref="ru.yandex.qatools.allure.data.Statistic"/>
+    </jaxb:bindings>
+
+    <jaxb:bindings node="//xsd:complexType[@name='time']">
+        <jaxb:class ref="ru.yandex.qatools.allure.data.Time"/>
+    </jaxb:bindings>
+
+    <jaxb:bindings node="//xsd:complexType[@name='status']">
+        <jaxb:class ref="ru.yandex.qatools.allure.model.Status"/>
+    </jaxb:bindings>
+
+    <jaxb:bindings node="//xsd:complexType[@name='failure']">
+        <jaxb:class ref="ru.yandex.qatools.allure.model.Failure"/>
+    </jaxb:bindings>
+
+    <jaxb:bindings node="//xsd:complexType[@name='description']">
+        <jaxb:class ref="ru.yandex.qatools.allure.model.Description"/>
+    </jaxb:bindings>
+</jaxb:bindings>

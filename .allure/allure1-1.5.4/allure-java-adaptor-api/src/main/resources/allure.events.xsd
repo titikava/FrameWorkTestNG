@@ -1,0 +1,215 @@
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+            xmlns:itn="http://jaxb2-commons.dev.java.net/basic/inheritance"
+            jaxb:extensionBindingPrefixes="itn"
+            jaxb:version="2.1"
+            xmlns:ns="urn:events.allure.qatools.yandex.ru"
+            targetNamespace="urn:events.allure.qatools.yandex.ru">
+
+
+    <xsd:element name="test-suite-started-event" type="ns:abstract-test-suite-started-event"/>
+    <xsd:complexType name="abstract-test-suite-started-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.TestSuiteEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="uid" type="xsd:string" nillable="false"/>
+            <xsd:element name="name" type="xsd:string" nillable="false"/>
+            <xsd:element name="title" type="xsd:string" nillable="true"/>
+            <xsd:element name="description" type="ns:description" nillable="true"/>
+            <xsd:element name="labels" type="ns:labels" minOccurs="0" nillable="false"/>
+        </xsd:all>
+    </xsd:complexType>
+
+
+    <xsd:element name="test-suite-finished-event" type="ns:abstract-test-suite-finished-event"/>
+    <xsd:complexType name="abstract-test-suite-finished-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.TestSuiteEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="uid" type="xsd:string" nillable="false"/>
+        </xsd:all>
+    </xsd:complexType>
+
+
+    <xsd:element name="test-case-started-event" type="ns:abstract-test-case-started-event"/>
+    <xsd:complexType name="abstract-test-case-started-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.TestCaseEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="suiteUid" type="xsd:string" nillable="false"/>
+            <xsd:element name="name" type="xsd:string" nillable="false"/>
+            <xsd:element name="title" type="xsd:string" nillable="true"/>
+            <xsd:element name="description" type="ns:description" nillable="true"/>
+            <xsd:element name="labels" type="ns:labels" minOccurs="0" nillable="false"/>
+        </xsd:all>
+    </xsd:complexType>
+
+
+    <xsd:element name="test-case-status-change-event" type="ns:abstract-test-case-status-change-event"/>
+    <xsd:complexType name="abstract-test-case-status-change-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.TestCaseEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="throwable" type="ns:throwable" nillable="true"/>
+        </xsd:all>
+    </xsd:complexType>
+
+
+    <xsd:element name="test-case-finished-event" type="ns:abstract-test-case-finished-event"/>
+    <xsd:complexType name="abstract-test-case-finished-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.TestCaseEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+
+    <xsd:element name="test-case-add-parameter-event" type="ns:abstract-test-case-add-parameter-event"/>
+    <xsd:complexType name="abstract-test-case-add-parameter-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.TestCaseEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="name" type="xsd:string" nillable="false"/>
+            <xsd:element name="value" type="xsd:string" nillable="false"/>
+            <xsd:element name="kind" type="xsd:string" default="environment-variable"/>
+        </xsd:all>
+    </xsd:complexType>
+
+
+    <xsd:element name="step-started-event" type="ns:abstract-step-started-event"/>
+    <xsd:complexType name="abstract-step-started-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.StepEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="name" type="xsd:string" nillable="false"/>
+            <xsd:element name="title" type="xsd:string" nillable="true"/>
+        </xsd:all>
+    </xsd:complexType>
+
+
+    <xsd:element name="step-failure-event" type="ns:abstract-step-failure-event"/>
+    <xsd:complexType name="abstract-step-failure-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.StepEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="throwable" type="ns:throwable" nillable="true"/>
+        </xsd:all>
+    </xsd:complexType>
+
+
+    <xsd:element name="step-canceled-event" type="ns:abstract-step-canceled-event"/>
+    <xsd:complexType name="abstract-step-canceled-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.StepEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="throwable" type="ns:throwable" nillable="true"/>
+        </xsd:all>
+    </xsd:complexType>
+
+
+    <xsd:element name="step-finished-event" type="ns:abstract-step-finished-event"/>
+    <xsd:complexType name="abstract-step-finished-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.StepEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:complexType>
+
+
+    <xsd:element name="make-attach-event" type="ns:abstract-make-attach-event"/>
+    <xsd:complexType name="abstract-make-attach-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.StepEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="title" type="xsd:string" nillable="true"/>
+            <xsd:element name="attachmentType" type="ns:attachment-type" nillable="true"/>
+            <xsd:element name="attach" type="ns:attachment" nillable="true"/>
+        </xsd:all>
+    </xsd:complexType>
+
+
+    <xsd:element name="make-attachment-event" type="ns:abstract-make-attachment-event"/>
+    <xsd:complexType name="abstract-make-attachment-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.StepEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="title" type="xsd:string" nillable="true"/>
+            <xsd:element name="attachment" type="xsd:base64Binary" nillable="true"/>
+            <xsd:element name="type" type="xsd:string" nillable="true"/>
+        </xsd:all>
+    </xsd:complexType>
+
+
+    <xsd:element name="remove-attachment-event" type="ns:abstract-remove-attachment-event"/>
+    <xsd:complexType name="abstract-remove-attachment-event" abstract="true">
+        <xsd:annotation>
+            <xsd:appinfo>
+                <itn:implements>ru.yandex.qatools.allure.events.StepEvent</itn:implements>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="pattern" type="ns:pattern" nillable="true"/>
+        </xsd:all>
+    </xsd:complexType>
+
+
+    <xsd:element name="clear-step-storage-event" type="ns:clear-step-storage-event"/>
+    <xsd:complexType name="clear-step-storage-event"/>
+
+
+    <xsd:element name="clear-test-storage-event" type="ns:clear-test-storage-event"/>
+    <xsd:complexType name="clear-test-storage-event"/>
+
+
+    <xsd:complexType name="labels">
+        <xsd:sequence>
+            <xsd:element name="label" type="ns:label" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="attachment-type"/>
+    <xsd:complexType name="attachment"/>
+
+    <xsd:complexType name="severity"/>
+    <xsd:complexType name="description"/>
+    <xsd:complexType name="label"/>
+
+    <xsd:complexType name="throwable"/>
+
+    <xsd:complexType name="pattern"/>
+
+</xsd:schema>
